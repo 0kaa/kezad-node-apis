@@ -1,6 +1,5 @@
 require("dotenv").config();
 const { Sequelize, DataTypes } = require("sequelize");
-const { MsSqlDialect } = require("@sequelize/mssql");
 const { v4: uuidv4 } = require("uuid"); // Use UUID to generate unique IDs
 // Initialize Sequelize
 // const sequelize = new Sequelize(
