@@ -1,5 +1,4 @@
 # KezadLayout Backend Application
-
 This application is a Node.js-based backend service for managing KezadLayout entries. It uses Sequelize as an ORM to interact with the database and UUIDs to uniquely identify each KezadLayout entry.
 
 ## Features
@@ -24,45 +23,36 @@ This application is a Node.js-based backend service for managing KezadLayout ent
 - A MySQL/PostgreSQL database setup and configured with Sequelize.
 - A `.env` file with the following variables configured:
 
-  ```
-  DB_NAME=your_database_name
-  DB_USER=your_database_user
-  DB_PASSWORD=your_database_password
-  DB_HOST=your_database_host
-  DB_DIALECT=mysql_or_postgres
-  ```
+   ```
+   DB_NAME=your_database_name
+   DB_USER=your_database_user
+   DB_PASSWORD=your_database_password
+   DB_HOST=your_database_host
+   DB_DIALECT=mysql_or_postgres
+   ```
 
 ## Installation
 
 1. Clone this repository:
 
-   ```bash
-   git clone https://github.com/yourusername/kezadlayout-backend-app.git
-   cd kezadlayout-backend-app
-   ```
+    ```bash
+    git clone https://github.com/yourusername/kezadlayout-backend-app.git
+    cd kezadlayout-backend-app
+    ```
 
 2. Install the dependencies:
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-3. Set up the database:
+3. Start the server:
 
-   Configure the `.env` file as described above, then run:
+    ```bash
+    npm start
+    ```
 
-   ```bash
-   npx sequelize-cli db:migrate
-   npx sequelize-cli db:seed:all
-   ```
-
-4. Start the server:
-
-   ```bash
-   npm start
-   ```
-
-   The server will start on `http://localhost:5001`.
+    The server will start on `http://localhost:5001`.
 
 ## API Endpoints
 
@@ -70,20 +60,20 @@ This application is a Node.js-based backend service for managing KezadLayout ent
 
 - **Endpoint**: `POST /kezadlayout`
 - **Body**:
-  - `ScreenName` (Text): The unique screen name.
-  - `ActiveLayout` (Text): The active layout for the screen.
+   - `ScreenName` (Text): The unique screen name.
+   - `ActiveLayout` (Text): The active layout for the screen.
 - **Response**: Returns the created KezadLayout entry.
 
 Example using Postman:
 
 1. Set method to `POST`.
 2. Use `raw` JSON in the body:
-   ```json
-   {
-     "ScreenName": "WaveScreen",
-     "ActiveLayout": "Layout1"
-   }
-   ```
+    ```json
+    {
+       "ScreenName": "WaveScreen",
+       "ActiveLayout": "Layout1"
+    }
+    ```
 
 ### 2. Retrieve All KezadLayout Entries
 
@@ -101,18 +91,18 @@ Example using Postman:
 - **Endpoint**: `PUT /kezadlayout/:screenName`
 - **Parameters**: `screenName` (Text) - The screen name of the KezadLayout entry.
 - **Body**:
-  - `ActiveLayout` (Text): The updated active layout.
+   - `ActiveLayout` (Text): The updated active layout.
 - **Response**: Returns the updated KezadLayout entry.
 
 Example using Postman:
 
 1. Set method to `PUT`.
 2. Use `raw` JSON in the body:
-   ```json
-   {
-     "ActiveLayout": "UpdatedLayout"
-   }
-   ```
+    ```json
+    {
+       "ActiveLayout": "UpdatedLayout"
+    }
+    ```
 
 ### 5. Delete a KezadLayout Entry
 
