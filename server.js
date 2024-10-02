@@ -63,7 +63,7 @@ app.put("/kezadlayout/:screenName", async (req, res) => {
     const { screenName } = req.params;
 
     // Ensure only 'WaveScreen' and 'customerTestimonials' can be updated
-    if (screenName !== "WaveScreen" && screenName !== "customerTestimonials") {
+    if (screenName !== "WaveScreen" && screenName !== "CustomerTestimonials") {
       return res.status(400).send("Invalid ScreenName");
     }
 
