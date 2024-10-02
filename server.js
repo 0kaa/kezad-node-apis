@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors"); // Import the cors middleware
+
 const { KezadLayout } = require("./db"); // Import the KezadLayout model
 const fs = require("fs"); // Import fs to handle file deletion
 const { v4: uuidv4 } = require("uuid"); // Use UUID to generate unique IDs
@@ -6,6 +8,7 @@ const { v4: uuidv4 } = require("uuid"); // Use UUID to generate unique IDs
 const app = express();
 const port = 5001;
 
+app.use(cors()); // Use the cors middleware
 app.use(express.json());
 
 // Create a new KezadLayout entry
