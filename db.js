@@ -10,6 +10,13 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,
+    dialectOptions: {
+      options: {
+        encrypt: true, // If you're connecting to Azure SQL or require encryption
+        trustServerCertificate: true, // Set to true for local development or if SSL is not properly set up
+      },
+    },
+    logging: false, // Disable logging for production
   }
 );
 
