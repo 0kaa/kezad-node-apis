@@ -131,6 +131,7 @@ app.delete("/kezadlayout/:screenName", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`Server is running on http://localhost:${port}`);
+  await connectToDatabase();
 });
