@@ -8,6 +8,9 @@ const port = 5001;
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  return res.json({ message: "Welcome to the KezadLayout API" });
+});
 
 // Create a new KezadLayout entry
 app.post("/kezadlayout", async (req, res) => {

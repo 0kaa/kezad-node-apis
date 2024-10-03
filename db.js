@@ -1,40 +1,26 @@
 require("dotenv").config();
-const { Connection, Request } = require("tedious");
+const sql = require("mssql");
 
 const config = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   server: process.env.DB_HOST,
-  authentication: {
-    type: "default",
-    options: {
-      userName: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-    },
-  },
+  database: process.env.DB_NAME,
+  port: 1433,
   options: {
-    database: process.env.DB_NAME,
     encrypt: false,
-    port: 1433,
     enableArithAbort: true,
-    requestTimeout: 30000, // 30 second
   },
 };
 
-const connectToDatabase = () => {
-  return new Promise((resolve, reject) => {
-    const connection = new Connection(config);
-
-    connection.on("connect", (err) => {
-      if (err) {
-        console.error("Database connection failed:", err);
-        reject(err);
-      } else {
-        console.log("Database connected successfully!");
-        resolve(connection);
-      }
-    });
-
-    connection.connect();
-  });
+const connectToDatabase = async () => {
+  try {
+    await sql.close(); // Close any existing connections before creating a new one
+    await sql.connect(config);
+    console.log("Database connected successfully!");
+  } catch (err) {
+    console.error("Database connection failed:", err);
+  }
 };
 
-module.exports = { connectToDatabase, Request };
+module.exports = { connectToDatabase, sql };
